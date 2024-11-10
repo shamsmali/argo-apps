@@ -4,17 +4,15 @@ kind: AppProject
 metadata:
   name: hello-service
   namespace: argocd
-
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
 spec:
-
   sourceRepos:
     - https://github.com/shamsmali/hello-service-a-deploy.git
   destinations:
     # Do not allow any app to be installed in `kube-system`  
     - namespace: '!kube-system'
       server: '*'
-    - namespace: '*'
+    - namespace: '*hello-service*'
       server: '*'
