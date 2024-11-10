@@ -26,3 +26,7 @@ spec:
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}-hello-service-a'
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
