@@ -1,23 +1,34 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: hello-service-a-application
-  namespace: argocd
+  name: hello-service-a-app
 spec:
-  project: default
+  generators:
+  - list:
+      elements:
+      - namespace: hello-service-a-dev
+        url: https://kubernetes.default.svc
+      - namespace: hello-service-a-stage
+        url: https://kubernetes.default.svc
+      - namespace: hello-service-a-prod
+        url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: '{{"{{"}}namespace{{"}}"}}-poc-app'
+    spec:
+      project: default
+      source:
+        path: deploy
+        repoURL: https://github.com/shamsmali/hello-service-a-deploy.git
+        targetRevision: HEAD
+      destination:
+        server: '{{"{{"}}url{{"}}"}}'
+        namespace: '{{"{{"}}namespace{{"}}"}}'
 
-  source:
-    repoURL: https://github.com/shamsmali/hello-service-a-deploy.git
-    targetRevision: HEAD
-    path: deploy
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: hello-service-a
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
 
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
+        automated:
+          selfHeal: true
+          prune: true
