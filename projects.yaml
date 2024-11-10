@@ -16,3 +16,6 @@ spec:
       server: '*'
     - namespace: '*hello-service*'
       server: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
