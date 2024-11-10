@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: HelloService
+metadata:
+  name: HelloService
+  namespace: argocd
+
+spec:
+  destinations:
+  # Do not allow any app to be installed in `kube-system`  
+  - namespace: '!kube-system'
+    server: '*'
+  - namespace: '*'
+    server: '*'
