@@ -18,7 +18,7 @@ spec:
     metadata:
       name: '{{.namespace}}-hello-service-a'
     spec:
-      project: HelloService
+      project: hello-service
       source:
         repoURL: https://github.com/shamsmali/hello-service-a-deploy.git
         targetRevision: HEAD
