@@ -22,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/infra-team/cluster-deployments.git
         targetRevision: HEAD
-        path: guestbook/{{.cluster}}
+        path: deploy
       destination:
         server: '{{.url}}'
-        namespace: '{{.cluster}}-hello-service-a
+        namespace: '{{.cluster}}-hello-service-a'
