@@ -27,8 +27,6 @@ spec:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
       syncPolicy:
-        automated:
-          prune: true
-          allowEmpty: true
+        automated: {}
         syncOptions:
         - CreateNamespace=true
