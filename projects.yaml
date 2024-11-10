@@ -1,8 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
-kind: HelloService
+kind: AppProject
+
 metadata:
   name: HelloService
   namespace: argocd
+
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 
 spec:
   destinations:
