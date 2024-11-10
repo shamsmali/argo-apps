@@ -20,7 +20,7 @@ spec:
     spec:
       project: hello-service-a
       source:
-        repoURL: https://github.com/infra-team/cluster-deployments.git
+        repoURL: https://github.com/shamsmali/hello-service-a-deploy.git
         targetRevision: HEAD
         path: deploy
       destination:
