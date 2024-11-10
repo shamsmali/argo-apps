@@ -9,9 +9,12 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 
 spec:
+
+  sourceRepos:
+    - https://github.com/shamsmali/hello-service-a-deploy.git
   destinations:
-  # Do not allow any app to be installed in `kube-system`  
-  - namespace: '!kube-system'
-    server: '*'
-  - namespace: '*'
-    server: '*'
+    # Do not allow any app to be installed in `kube-system`  
+    - namespace: '!kube-system'
+      server: '*'
+    - namespace: '*'
+      server: '*'
