@@ -16,7 +16,7 @@ spec:
         url: https://kubernetes.default.svc
   template:
     metadata:
-      name: '{{.namespace}}-hello-service-a'
+      name: '{{.namespace}}'
     spec:
       project: hello-service
       source:
@@ -27,6 +27,8 @@ spec:
         server: '{{.url}}'
         namespace: '{{.namespace}}-hello-service-a'
       syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
         automated:
           prune: true
           allowEmpty: true
